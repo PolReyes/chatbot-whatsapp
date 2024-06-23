@@ -6,15 +6,15 @@ const VerifyToken = (req, res) => {
         let challenge = req.body["hub.challenge"];
 
         if (challenge != null && token != null && token == accesToken) {
-            res.send(challenge);
+            res.send(challenge, "0");
         } else {
-            res.status(400).send();
+            res.status(400).send("1");
         }
 
 
 
     } catch (e) {
-        res.status(400).send();
+        res.status(400).send("2");
     }
 
 }
