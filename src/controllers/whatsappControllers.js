@@ -1,7 +1,7 @@
 const VerifyToken = (req, res) => {
 
     try {
-        let accesToken = process.env.TOKEN;
+        let accesToken = "bf7886799222fe3518017ab";
         let token = req.query["hub.verify_token"];
         let challenge = req.body["hub.challenge"];
 
