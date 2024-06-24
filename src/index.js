@@ -15,4 +15,4 @@ app.use("/whatsapp", apiRoute);
     res.send("ChatBot")
 })*/
 
-app.listen(PORT, () => (console.log("el puerto es: " + PORT + process.env.TOKEN)));
+app.listen(PORT, () => (console.log("el puerto es: " + PORT)));
