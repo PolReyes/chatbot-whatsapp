@@ -2,7 +2,7 @@ require('dotenv').config();
 const VerifyToken = (req, res) => {
 
     try {
-        let accesToken = "TOKEN=bf7886799222fe3518017ab";
+        let accesToken = "bf7886799222fe3518017ab";
         //let accesToken = process.env.TOKEN;
         //let token = req.query["hub.verify_token"];
         //let challenge = req.query["hub.challenge"];
