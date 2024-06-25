@@ -28,8 +28,9 @@ app.get("/webhook", (req, res) => {
         }
     }
 });
-/*app.get('/', function (req, res) {
+
+app.get('/', function (req, res) {
     res.send("ChatBot")
-})*/
+})
 
 app.listen(PORT, () => (console.log("el puerto es: " + PORT)));
