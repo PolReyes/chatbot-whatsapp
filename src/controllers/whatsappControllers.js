@@ -68,7 +68,7 @@ const ReceivedMessage = (req, res) => {
                 });
                 res.status(200);
             } else {
-                res.status(403);
+                res.sendstatus(403);
             }
         }
     } catch (error) {
