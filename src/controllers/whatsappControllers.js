@@ -48,12 +48,12 @@ const ReceivedMessage = (req, res) => {
                 url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKENAPI,
                 //url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages",
                 data: {
-                    messaging_product: "whatsapp",
-                    to: from,
-                    text: {
-                        body: "Hi.. I'm Prasath, your message is " + msg_body
+                    "messaging_product": "whatsapp",
+                    "to": from,
+                    "text": {
+                        "body": "Hi.. I'm Prasath, your message is " + msg_body
                     },
-                    type: "text"
+                    "type": "text"
                 },
                 headers: {
                     "Content-Type": "application/json",
