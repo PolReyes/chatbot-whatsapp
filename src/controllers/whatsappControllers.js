@@ -44,7 +44,8 @@ const ReceivedMessage = (req, res) => {
 
             axios({
                 method: "POST",
-                url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKEN,
+                //url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKEN,
+                url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages",
                 data: {
                     messaging_product: "whatsapp",
                     to: from,
@@ -53,7 +54,8 @@ const ReceivedMessage = (req, res) => {
                     }
                 },
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + process.env.TOKENAPI
                 }
 
             });
