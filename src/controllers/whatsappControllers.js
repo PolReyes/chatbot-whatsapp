@@ -55,7 +55,7 @@ const ReceivedMessage = (req, res) => {
                 },
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + process.env.TOKENAPI
+                    Authorization: "Bearer EAAKfkGMvt58BOyUHO8uOcOEmZBaw15YbE3fV3XkcJVPY6oa57esVj3D5XlDrCTYMveFkpObQsVgDZBtUK9KPz8OpZBmkikNoXLAX28dZCPeNo2g1yBdNfpczuHq0ZAqg4EOOzZByokUCgKU35yJWM5SR3sYYHiQjc7lqa0NFP0n5wDPZCNnKiUk4mj72RidMOK3dFr6xNKZBjC2MuSoTQjDj"
                 }
 
             });
