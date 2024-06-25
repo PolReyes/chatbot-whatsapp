@@ -34,11 +34,10 @@ const ReceivedMessage = (req, res) => {
     try {
         if (body_param.object) {
             console.log("1", body_param.object);
-            if (body_param.entry[0].changes[0].value.messages[0]
-                /*&&
+            if (body_param.entry &&
                 body_param.entry[0].changes &&
                 body_param.entry[0].changes[0].value.messages &&
-                body_param.entry[0].changes[0].value.messages[0]*/
+                body_param.entry[0].changes[0].value.messages[0]
             ) {
                 console.log("2")
                 let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
@@ -72,6 +71,8 @@ const ReceivedMessage = (req, res) => {
                 console.log("3")
                 res.sendStatus(404);
             }
+        } else {
+            res.sendStatus(404);
         }
     } catch (error) {
         res.sendStatus(404).send("Algo salió mal" + error)
