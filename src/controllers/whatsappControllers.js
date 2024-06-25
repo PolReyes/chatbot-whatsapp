@@ -1,4 +1,4 @@
-//require('dotenv').config();
+const axios = require("axios");
 const VerifyToken = (req, res) => {
 
     try {
@@ -17,7 +17,7 @@ const VerifyToken = (req, res) => {
                 res.status(403);
             }
         } else {
-            res.status(403).send("Algo salió mal");
+            res.status(200).send("Token ya se verificó");
         }
 
 
@@ -28,29 +28,40 @@ const VerifyToken = (req, res) => {
 }
 
 const ReceivedMessage = (req, res) => {
-    try {
-        let entry = req.body["entry"][0];
-        let changes = entry["changes"][0];
-        let value = changes["value"];
-        let messageObject = value["messages"];
-        let messages = messageObject[0];
-        let text = GetTextUser(messages);
+    let body_param = req.body;
 
-        if (typeof messageObject != "undefined") {
-            let messages = messageObject[0];
-            let text = GetTextUser(messages);
+    console.log(JSON.stringify(body_param, null, 2));
 
-            console.log(text)
+    if (body_param.object) {
+        if (body_param.entry &&
+            body_param.entry[0].changes &&
+            body_param.entry[0].changes[0].value.message &&
+            body_param.entry[0].changes[0].value.message[0]
+        ) {
+            let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
+            let from = body_param.entry[0].changes[0].value.messages[0].from;
+            let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
+
+            axios({
+                method: "POST",
+                url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKENAPI,
+                data: {
+                    messaging_product: "whatsapp",
+                    to: from,
+                    text: {
+                        body: "Hi.. I'm Prasath, your message is " + msg_body
+                    }
+                },
+                headers: {
+                    "Content-Type": "application/json"
+                }
+
+            });
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(404);
         }
-
-        console.log(text, messageObject);
-
-        res.send("EVENT_RECEIVED");
-    } catch (e) {
-        res.send("EVENT: " + e)
-    };
-
-    res.send("EVENT_RECEIVED");
+    }
 }
 
 function GetTextUser(messages) {
