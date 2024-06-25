@@ -66,13 +66,10 @@ const ReceivedMessage = (req, res) => {
                     }
 
                 });
-                res.sendStatus(200);
+                res.status(200);
             } else {
-                console.log("3")
-                res.sendStatus(404);
+                res.status(403);
             }
-        } else {
-            res.sendStatus(404);
         }
     } catch (error) {
         res.sendStatus(404).send("Algo salió mal" + error)
