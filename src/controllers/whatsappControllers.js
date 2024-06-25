@@ -33,13 +33,12 @@ const ReceivedMessage = (req, res) => {
     // console.log(JSON.stringify(body_param, null, 2));
     try {
         if (body_param.object) {
-            console.log("1", body_param.object);
             if (body_param.entry &&
                 body_param.entry[0].changes &&
                 body_param.entry[0].changes[0].value.messages &&
                 body_param.entry[0].changes[0].value.messages[0]
             ) {
-                console.log("2")
+
                 let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
                 let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
