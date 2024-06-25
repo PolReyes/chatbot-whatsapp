@@ -2,14 +2,14 @@
 const VerifyToken = (req, res) => {
 
     try {
-        const accesToken = "bf7886799222fe3518017ab";
+        let accesToken = "bf7886799222fe3518017ab";
         //let accesToken = process.env.TOKEN;
         //let token = req.query["hub.verify_token"];
         //let challenge = req.query["hub.challenge"];
 
-        const mode = req.query["hub.mode"];
-        const challenge = req.query["hub.challenge"];
-        const token = req.query["hub.verify_token"];
+        let mode = req.query["hub.mode"];
+        let challenge = req.query["hub.challenge"];
+        let token = req.query["hub.verify_token"];
 
 
 
@@ -20,7 +20,7 @@ const VerifyToken = (req, res) => {
                 res.status(403);
             }
         }*/
-
+        res.send("-1 " + mode + "//-" + challenge + "//-" + token + "//-" + process.env.TOKEN)
         if (challenge != null && token != null && token === accesToken) {
             res.send(challenge, "0 " + mode + "//-" + challenge + "//-" + token + "//-" + process.env.TOKEN);
         } else {
