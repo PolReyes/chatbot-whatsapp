@@ -11,27 +11,8 @@ const PORT = process.env.PORT || 3000;
 
 //app.use(express.json());
 
-/* app.use('/webhook', apiRoute); */
+app.use('/webhook', apiRoute);
 
-app.get("/webhook", (req, res) => {
-
-
-
-    let mode = req.query["hub.mode"];
-    let challenge = req.query["hub.challenge"];
-    let token = req.query["hub.verify_token"];
-
-
-    return res.status(200).json(req.query);
-    /*
-       if (mode && token) {
-           if (mode === "subscribe" && token === process.env.TOKEN) {
-               res.status(200).send(challenge);
-           } else {
-               res.status(403);
-           }
-       }*/
-});
 
 app.get('/', function (req, res) {
     res.status(200).send("ChatBot OK")
