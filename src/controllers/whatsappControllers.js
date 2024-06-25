@@ -21,7 +21,7 @@ const VerifyToken = (req, res) => {
             }
         }*/
 
-        res.send(JSON.stringify(req))
+        res.send(JSON.stringify(req.query))
         /*if (challenge != null && token != null && token === accesToken) {
             res.send(challenge, "0 " + mode + "//-" + challenge + "//-" + token + "//-" + process.env.TOKEN);
         } else {
