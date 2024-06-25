@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 const VerifyToken = (req, res) => {
 
     try {
@@ -36,27 +36,29 @@ const VerifyToken = (req, res) => {
 }
 
 const ReceivedMessage = (req, res) => {
-    try {
-        let entry = req.body["entry"][0];
-        let changes = entry["changes"][0];
-        let value = changes["value"];
-        let messageObject = value["messages"];
-        let messages = messageObject[0];
-        let text = GetTextUser(messages);
-
-        if (typeof messageObject != "undefined") {
+    /*    try {
+            let entry = req.body["entry"][0];
+            let changes = entry["changes"][0];
+            let value = changes["value"];
+            let messageObject = value["messages"];
             let messages = messageObject[0];
             let text = GetTextUser(messages);
+    
+            if (typeof messageObject != "undefined") {
+                let messages = messageObject[0];
+                let text = GetTextUser(messages);
+    
+                console.log(text)
+            }
+    
+            console.log(text, messageObject);
+    
+            res.send("EVENT_RECEIVED");
+        } catch (e) {
+            res.send("EVENT: " + e)
+        };*/
 
-            console.log(text)
-        }
-
-        console.log(text, messageObject);
-
-        res.send("EVENT_RECEIVED");
-    } catch (e) {
-        res.send("EVENT: " + e)
-    };
+    res.send("EVENT_RECEIVED");
 }
 
 function GetTextUser(messages) {
