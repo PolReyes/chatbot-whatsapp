@@ -31,44 +31,48 @@ const ReceivedMessage = (req, res) => {
     let body_param = req.body;
 
     // console.log(JSON.stringify(body_param, null, 2));
+    try {
+        if (body_param.object) {
+            if (body_param.entry &&
+                body_param.entry[0].changes &&
+                body_param.entry[0].changes[0].value.messages &&
+                body_param.entry[0].changes[0].value.messages[0]
+            ) {
+                let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
+                let from = body_param.entry[0].changes[0].value.messages[0].from;
+                let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
 
-    if (body_param.object) {
-        if (body_param.entry &&
-            body_param.entry[0].changes &&
-            body_param.entry[0].changes[0].value.messages &&
-            body_param.entry[0].changes[0].value.messages[0]
-        ) {
-            let phon_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
-            let from = body_param.entry[0].changes[0].value.messages[0].from;
-            let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
-
-            //console.log("phone number " + phon_no_id);
-            //console.log("from " + from);
-            //console.log("boady param " + msg_body);
-            axios({
-                method: "POST",
-                //url: ?access_token=EAAKfkGMvt58BO9ZBGCJ8odNmUZA60vtqZCwlwLbW3ppXuISJskKtpStwR6uFnx94zGxgvqyVLjvMAq0bYFZAuVYZCDSoA4Qa8LbJOWueWAi2Tcn1KJJFcoYjHPnDFiCzyB1RfCPihTeNiFE45Bph88y3QZB5RqbztemXD1vms3kYZCoBBMyZCH1nkYMeXbkFwyVQ
-                url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKENAPI,
-                //url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages",
-                data: {
-                    messaging_product: "whatsapp",
-                    to: from,
-                    text: {
-                        body: "Hola soy un bot, tu mensaje es: " + msg_body
+                //console.log("phone number " + phon_no_id);
+                //console.log("from " + from);
+                //console.log("boady param " + msg_body);
+                axios({
+                    method: "POST",
+                    //url: ?access_token=EAAKfkGMvt58BO9ZBGCJ8odNmUZA60vtqZCwlwLbW3ppXuISJskKtpStwR6uFnx94zGxgvqyVLjvMAq0bYFZAuVYZCDSoA4Qa8LbJOWueWAi2Tcn1KJJFcoYjHPnDFiCzyB1RfCPihTeNiFE45Bph88y3QZB5RqbztemXD1vms3kYZCoBBMyZCH1nkYMeXbkFwyVQ
+                    url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKENAPI,
+                    //url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages",
+                    data: {
+                        messaging_product: "whatsapp",
+                        to: from,
+                        text: {
+                            body: "Hola soy un bot, tu mensaje es: " + msg_body
+                        },
+                        type: "text"
                     },
-                    type: "text"
-                },
-                headers: {
-                    "Content-Type": "application/json",
-                    //Authorization: "Bearer EAAKfkGMvt58BOyUHO8uOcOEmZBaw15YbE3fV3XkcJVPY6oa57esVj3D5XlDrCTYMveFkpObQsVgDZBtUK9KPz8OpZBmkikNoXLAX28dZCPeNo2g1yBdNfpczuHq0ZAqg4EOOzZByokUCgKU35yJWM5SR3sYYHiQjc7lqa0NFP0n5wDPZCNnKiUk4mj72RidMOK3dFr6xNKZBjC2MuSoTQjDj"
-                }
+                    headers: {
+                        "Content-Type": "application/json",
+                        //Authorization: "Bearer EAAKfkGMvt58BOyUHO8uOcOEmZBaw15YbE3fV3XkcJVPY6oa57esVj3D5XlDrCTYMveFkpObQsVgDZBtUK9KPz8OpZBmkikNoXLAX28dZCPeNo2g1yBdNfpczuHq0ZAqg4EOOzZByokUCgKU35yJWM5SR3sYYHiQjc7lqa0NFP0n5wDPZCNnKiUk4mj72RidMOK3dFr6xNKZBjC2MuSoTQjDj"
+                    }
 
-            });
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(404);
+                });
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(404);
+            }
         }
+    } catch (error) {
+        res.sendStatus(404).send("Algo salió mal" + error)
     }
+
 }
 
 function GetTextUser(messages) {
