@@ -44,7 +44,7 @@ const ReceivedMessage = (req, res) => {
 
             axios({
                 method: "POST",
-                url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKEN,
+                url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKEN,
                 data: {
                     messaging_product: "whatsapp",
                     to: from,
