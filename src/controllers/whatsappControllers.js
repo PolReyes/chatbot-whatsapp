@@ -33,7 +33,6 @@ const ReceivedMessage = (req, res) => {
     // console.log(JSON.stringify(body_param, null, 2));
 
     if (body_param.object) {
-        console.log("inside body param");
         if (body_param.entry &&
             body_param.entry[0].changes &&
             body_param.entry[0].changes[0].value.messages &&
@@ -43,9 +42,9 @@ const ReceivedMessage = (req, res) => {
             let from = body_param.entry[0].changes[0].value.messages[0].from;
             let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
 
-            console.log("phone number " + phon_no_id);
-            console.log("from " + from);
-            console.log("boady param " + msg_body);
+            //console.log("phone number " + phon_no_id);
+            //console.log("from " + from);
+            //console.log("boady param " + msg_body);
             axios({
                 method: "POST",
                 //url: ?access_token=EAAKfkGMvt58BO9ZBGCJ8odNmUZA60vtqZCwlwLbW3ppXuISJskKtpStwR6uFnx94zGxgvqyVLjvMAq0bYFZAuVYZCDSoA4Qa8LbJOWueWAi2Tcn1KJJFcoYjHPnDFiCzyB1RfCPihTeNiFE45Bph88y3QZB5RqbztemXD1vms3kYZCoBBMyZCH1nkYMeXbkFwyVQ
@@ -55,7 +54,7 @@ const ReceivedMessage = (req, res) => {
                     messaging_product: "whatsapp",
                     to: from,
                     text: {
-                        body: "Hi.. I'm Prasath, your message is " + msg_body
+                        body: "Hola soy un bot, tu mensaje es: " + msg_body
                     },
                     type: "text"
                 },
