@@ -21,7 +21,7 @@ app.get("/webhook", (req, res) => {
     let challenge = req.query["hub.challenge"];
     let token = req.query["hub.verify_token"];
 
-    const data = req.query;
+    const data = req.params.token;
     console.log(data);
     return res.status(200).json(data);
     /*
