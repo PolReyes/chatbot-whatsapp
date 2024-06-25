@@ -13,15 +13,14 @@ const VerifyToken = (req, res) => {
 
 
 
-        /*if (mode && token) {
+        if (mode && token) {
             if (mode === "subscribe" && token === accesToken) {
                 res.status(200).send(challenge);
             } else {
                 res.status(403);
             }
-        }*/
+        }
 
-        res.status(200).send(challenge);
         /*if (challenge != null && token != null && token === accesToken) {
             res.send(challenge, "0 " + mode + "//-" + challenge + "//-" + token + "//-" + process.env.TOKEN);
         } else {
