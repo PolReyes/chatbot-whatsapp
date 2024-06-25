@@ -15,21 +15,21 @@ const PORT = process.env.PORT || 3000;
 
 app.get("/webhook", (req, res) => {
 
-    res.status(200).send("Hola" + req.query["hub.mode"])
-    /*
+
+
     let mode = req.query["hub.mode"];
     let challenge = req.query["hub.challenge"];
     let token = req.query["hub.verify_token"];
 
-
-
-    if (mode && token) {
-        if (mode === "subscribe" && token === process.env.TOKEN) {
-            res.status(200).send(challenge);
-        } else {
-            res.status(403);
-        }
-    }*/
+    res.status(200).send("Hola" + mode + challenge + token)
+    /*
+       if (mode && token) {
+           if (mode === "subscribe" && token === process.env.TOKEN) {
+               res.status(200).send(challenge);
+           } else {
+               res.status(403);
+           }
+       }*/
 });
 
 app.get('/', function (req, res) {
