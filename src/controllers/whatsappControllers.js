@@ -33,7 +33,7 @@ const ReceivedMessage = (req, res) => {
     // console.log(JSON.stringify(body_param, null, 2));
     try {
         if (body_param.object) {
-            console.log("1");
+            console.log("1", body_param.object);
             if (body_param.entry &&
                 body_param.entry[0].changes &&
                 body_param.entry[0].changes[0].value.messages &&
