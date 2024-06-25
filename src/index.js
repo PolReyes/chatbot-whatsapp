@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 /* app.use('/webhook', apiRoute); */
 
 app.get("/webhook", (req, res) => {
-    res.status(200).send(parse.JSON(req.body))
+    res.status(200).send(JSON.parse(req.body))
     /*
     let mode = req.query["hub.mode"];
     let challenge = req.query["hub.challenge"];
