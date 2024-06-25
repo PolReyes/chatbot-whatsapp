@@ -13,19 +13,19 @@ const VerifyToken = (req, res) => {
 
 
 
-        if (mode && token) {
+        /*if (mode && token) {
             if (mode === "subscribe" && token === accesToken) {
                 res.status(200).send(challenge);
             } else {
                 res.status(403);
             }
-        }
+        }*/
 
-        /* if (challenge != null && token != null && token == accesToken) {
-             res.send(challenge, "0");
-         } else {
-             res.status(400).send("1");
-         }*/
+        if (challenge != null && token != null && token == accesToken) {
+            res.send(challenge, "0");
+        } else {
+            res.status(400).send("1");
+        }
 
 
 
