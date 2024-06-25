@@ -7,7 +7,7 @@ const VerifyToken = (req, res) => {
         //let token = req.query["hub.verify_token"];
         //let challenge = req.query["hub.challenge"];
 
-        let mode = req.query["hub.mode"];
+        // let mode = req.query["hub.mode"];
         let challenge = req.query["hub.challenge"];
         let token = req.query["hub.verify_token"];
 
