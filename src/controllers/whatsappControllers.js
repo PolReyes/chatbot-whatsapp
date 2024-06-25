@@ -2,14 +2,14 @@
 const VerifyToken = (req, res) => {
 
     try {
-        let accesToken = "bf7886799222fe3518017ab";
+        const accesToken = "bf7886799222fe3518017ab";
         //let accesToken = process.env.TOKEN;
         //let token = req.query["hub.verify_token"];
         //let challenge = req.query["hub.challenge"];
 
-        let mode = req.query["hub.mode"];
-        let challenge = req.query["hub.challenge"];
-        let token = req.query["hub.verify_token"];
+        const mode = req.query["hub.mode"];
+        const challenge = req.query["hub.challenge"];
+        const token = req.query["hub.verify_token"];
 
 
 
