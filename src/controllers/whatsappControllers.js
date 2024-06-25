@@ -45,7 +45,7 @@ const ReceivedMessage = (req, res) => {
             axios({
                 method: "POST",
                 //url: ?access_token=EAAKfkGMvt58BO9ZBGCJ8odNmUZA60vtqZCwlwLbW3ppXuISJskKtpStwR6uFnx94zGxgvqyVLjvMAq0bYFZAuVYZCDSoA4Qa8LbJOWueWAi2Tcn1KJJFcoYjHPnDFiCzyB1RfCPihTeNiFE45Bph88y3QZB5RqbztemXD1vms3kYZCoBBMyZCH1nkYMeXbkFwyVQ
-                url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKEN,
+                url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKENAPI,
                 //url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages",
                 data: {
                     messaging_product: "whatsapp",
