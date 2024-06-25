@@ -44,18 +44,20 @@ const ReceivedMessage = (req, res) => {
 
             axios({
                 method: "POST",
-                //url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKEN,
-                url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages",
+                //url: ?access_token=EAAKfkGMvt58BO9ZBGCJ8odNmUZA60vtqZCwlwLbW3ppXuISJskKtpStwR6uFnx94zGxgvqyVLjvMAq0bYFZAuVYZCDSoA4Qa8LbJOWueWAi2Tcn1KJJFcoYjHPnDFiCzyB1RfCPihTeNiFE45Bph88y3QZB5RqbztemXD1vms3kYZCoBBMyZCH1nkYMeXbkFwyVQ
+                url: "https://graph.facebook.com/v13.0/" + phon_no_id + "/messages?access_token=" + process.env.TOKEN,
+                //url: "https://graph.facebook.com/v19.0/" + phon_no_id + "/messages",
                 data: {
                     messaging_product: "whatsapp",
                     to: from,
                     text: {
                         body: "Hi.. I'm Prasath, your message is " + msg_body
-                    }
+                    },
+                    type: "text"
                 },
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer EAAKfkGMvt58BOyUHO8uOcOEmZBaw15YbE3fV3XkcJVPY6oa57esVj3D5XlDrCTYMveFkpObQsVgDZBtUK9KPz8OpZBmkikNoXLAX28dZCPeNo2g1yBdNfpczuHq0ZAqg4EOOzZByokUCgKU35yJWM5SR3sYYHiQjc7lqa0NFP0n5wDPZCNnKiUk4mj72RidMOK3dFr6xNKZBjC2MuSoTQjDj"
+                    //Authorization: "Bearer EAAKfkGMvt58BOyUHO8uOcOEmZBaw15YbE3fV3XkcJVPY6oa57esVj3D5XlDrCTYMveFkpObQsVgDZBtUK9KPz8OpZBmkikNoXLAX28dZCPeNo2g1yBdNfpczuHq0ZAqg4EOOzZByokUCgKU35yJWM5SR3sYYHiQjc7lqa0NFP0n5wDPZCNnKiUk4mj72RidMOK3dFr6xNKZBjC2MuSoTQjDj"
                 }
 
             });
